@@ -1,13 +1,18 @@
 ##  APサーバ
 - サーバ名: Puma
 - バージョン名: 6.4.2
-- サーバ終了時: Errorになる（添付画像）
 ![03-01-01](https://github.com/pikogappa/RaiseTech-AWS/blob/images/03-01-01_PumaVersion.png)
-- 再起動後: 表示される（添付画像）
+- サーバ終了時: Errorになる
+![03-01-02](https://github.com/pikogappa/RaiseTech-AWS/blob/images/03-01-02_StopPumaScreen.png)
+- 再起動後: 表示される
+![03-01-03](https://github.com/pikogappa/RaiseTech-AWS/blob/images/03-01-03_ReStartPumaScreen.png)
 ## DBサーバ
 - サーバ名: MySQL
 - バージョン名: 8.4.2
-- サーバ終了時: Errorになる（添付画像）
+![03-02-01](https://github.com/pikogappa/RaiseTech-AWS/blob/images/03-02-01_MySQLVersion.png)
+- サーバ終了時: Errorになる
+![03-02-02](https://github.com/pikogappa/RaiseTech-AWS/blob/images/03-02-02_StopMySQLCL.png)
+![03-02-03](https://github.com/pikogappa/RaiseTech-AWS/blob/images/03-02-03_StopMySQLScreen.png)
 - Railsの構成管理ツール名
   - Bunlder:  特定のプロジェクト内でのGemの依存関係を管理し、Versionを固定する
   - RubyGems: ここのGemインストールと管理を行うツール
