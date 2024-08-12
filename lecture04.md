@@ -1,10 +1,10 @@
 ## 概要 今回の構築範囲
-- NWダイアグラム
+- NWダイアグラム  
 ![04-00-01](https://github.com/pikogappa/RaiseTech-AWS/blob/images/04-00-01_NW-diagram.png)
 
 ## 課題1 VPCを作成
-- リソース詳細
-  - 4サブネット：2AZ（1a,1c）×2種類（Public,Private）
+- リソース詳細  
+  - 4サブネット：2AZ（1a,1c）×2種類（Public,Private）  
 ![04-01-01](https://github.com/pikogappa/RaiseTech-AWS/blob/images/04-01-01_vpc-overview.png)
 
 ## 課題2 EC2とRDSを構築
