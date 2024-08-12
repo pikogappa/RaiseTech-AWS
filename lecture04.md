@@ -1,11 +1,15 @@
 ## 概要 今回の構築範囲
 - NWダイアグラム  
-![04-00-01](https://github.com/pikogappa/RaiseTech-AWS/blob/images/04-00-01_NW-diagram.png)
+![04-00-01](https://github.com/pikogappa/RaiseTech-AWS/blob/lecture04/images/04/04-00-01_nw-diagram.png)
 
 ## 課題1 VPCを作成
 - リソース詳細  
   - 4サブネット：2AZ（1a,1c）×2種類（Public,Private）  
-![04-01-01](https://github.com/pikogappa/RaiseTech-AWS/blob/images/04-01-01_vpc-overview.png)
+  ![04-01-01](/images/04/04-01-01_vpc-overview.png)
+  - Publicサブネット: ルートテーブルがローカル+IGWへのルート  
+  ![04-01-02](https://github.com/pikogappa/RaiseTech-AWS/blob/lecture04/images/04/04-01-02_vpc-subnet-public-1a.png)
+  ![04-01-03](https://github.com/pikogappa/RaiseTech-AWS/blob/lecture04/images/04/04-01-02_vpc-subnet-public-1a.png)
+  - Privateサブネット: ルートテーブルがローカルのみ（IGWなし）  
 
 ## 課題2 EC2とRDSを構築
 ### EC2
@@ -24,10 +28,9 @@
 - リソース詳細
   - インバウンドでEC2からの通信を許可する
 ![04-03-01](https://github.com/pikogappa/RaiseTech-AWS/blob/images/04-03-01_rds-overview.png)
-- サブネットグループ、サブネットの詳細（Private1, Private2）
+- サブネットグループ（Private1, Private2）
+  - サブネット
 ![04-03-02](https://github.com/pikogappa/RaiseTech-AWS/blob/images/04-03-02_rds-subnetgroup.png)
-![04-03-03](https://github.com/pikogappa/RaiseTech-AWS/blob/images/04-03-03_rds-subnet-private2.png)
-![04-03-04](https://github.com/pikogappa/RaiseTech-AWS/blob/images/04-03-04_rds-subnet-private2.png)
 - セキュリティグループ
   - RDSからEC2のインバウンド
 ![04-03-05](https://github.com/pikogappa/RaiseTech-AWS/blob/images/04-03-05_rds-sg-rds-ec2-in.png)
