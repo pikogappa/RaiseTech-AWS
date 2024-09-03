@@ -1,84 +1,26 @@
-## 構築の流れ  
-
-### EC2構築  
-- ローカル環境からSSH接続  
-- EC2のパッケージの最新化
-````
-$ sudo yum update  
-````
-- 関連するパッケージのインストール  
-````
-$ sudo yum install \
-git make gcc-c++ patch \
-openssl-devel \
-libyaml-devel libffi-devel libicu-devel \
-libxml2 libxslt libxml2-devel libxslt-devel \
-zlib-devel readline-devel \`
-mysql mysql-server mysql-devel \
-ImageMagick ImageMagick-devel \
-epel-releas
-````
-- renvをインストール  
-````
-$ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-````
-- renvをどこからでも呼び出せるように環境設定をする  
-````
-$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile  
-$ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile  
-$ exec $SHELL -l  
-````
-- version指定のためruby-buildを設定する 
-````
-$ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build  
-$ rbenv rehash  
-````
-- Rubyのversionをreadme指定の3.2.3にする  
-````
-$ rbenv install 3.2.3 --verbose  
-$ rbenv global 3.2.3  
-$ rbenv rehash  
-$ ruby -v  
-````
-- bundlerインストール  
-````
-$ gem install bundler -v 2.3.14  
-$ bundler -v  
-````
-- railsインストール  
-````
-gem install rails -v 7.1.3.2  
-````
-- nvmをインストール  
-````
-$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash  
-````
-- nvmを有効化  
-````
-$ . ~/.nvm/nvm.sh  
-- Node(17.9.1)をインストール  
-$ nvm install 17.9.1  
-````
-- yarnのインストール  
-````
-npm install --global yarn  
-````
-- インスタンス作成初期からインストールされているMariaDB用パッケージを削除する  
-````
-$ sudo yum remove mariadb-*
-````
-
-- インスタンス作成初期からインストールされているMariaDB用パッケージを削除する。
-````
-$ sudo yum remove mariadb-*
-````
-
-- MySQLのリポジトリをyumに追加
-````
-$ sudo yum localinstall https://dev.mysql.com/get/mysql80-community-release-el7-5.noarch.rpm
-````
-- MySQLに必要なパッケージ(mysql-community-server)を取得
-````
-$ sudo yum install --enablerepo=mysql80-community mysql-community-server
-````
-
+## 課題内容  
+### NW構成図  
+![05-00-01](/images/05/05-00-01_nw-diagram.png)  
+### ①組み込みサーバー(Pumaのみ)で動作確認  
+![05-01-01](/images/05/05-01-01_puma-only.png)  
+### ②組み込みサーバーとUnixSocketを使った動作確認  
+![05-02-01](/images/05/05-02-01_unix-socket.png)  
+### ③Nginxの単体起動確認  
+![05-03-01](/images/05/05-03-01_nginx-only.png)  
+### ④Nginxと組み込みサーバ、UnixSocketを使った動作確認  
+![05-04-01](/images/05/05-04-01_puma-status.png)  
+![05-04-02](/images/05/05-04-02_nginx-status.png)  
+![05-04-03](/images/05/05-04-03_nginx-puma-unixsocket.png)  
+### ⑤ELB（ALB）を追加  
+![05-05-01](/images/05/05-05-01_alb-connection.png)  
+### ⑥S3を追加  
+![05-06-01](/images/05/05-06-01_save-on-s3.png)  
+![05-06-02](/images/05/05-06-02_img-on-S3.png)  
+![05-06-03](/images/05/05-06-03_img-on-S3.png)  
+![05-06-04](/images/05/05-06-04_img-on-S3.png)  
+※各課題での詳細手順・設定項目は[課題の詳細手順](/images/05/lecture05-in-detail.md)に記載
+## 感想  
+- 魔の第5回課題と言われている理由がよくわかりました…非常に難易度高かったです…
+- 事前にNW構成図を書いて設計内容を頭に入れながら作業内容に落とし込むことで、自分が今何の作業をしているのか？という点を意識しながら進めました
+- 設計図はシンプルなのに構築時は1箇所ずつ詰まる感覚があり、苦しいときもありましたが、エラーが解決できたときの達成感があった
+- 仮説→検証の繰り返しの大切さを再実感しました。
